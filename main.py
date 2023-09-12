@@ -145,7 +145,17 @@ def contact(update: Update, context: CallbackContext):
 
     logger.info(f"User requested contact information - User ID: {user_id}, Chat ID: {chat_id}, Username: {username}")
 
-    contact_text = "Name: *Andhi Toofan*\nOwner, ShoutToLearn\nTelegram: @AndhiToofan\nHe is 19 years old. So, talk to him accordingly\!"
+    contact_text = '''
+🚀 **Meet the Mastermind Behind ShoutToLearn**
+
+Name: *Andhi Toofan* 💥
+Role: Founder and Captain of ShoutToLearn 🚀
+Telegram: [@AndhiToofan](https://telegram.me/AndhiToofan)
+
+Age is just a number\, and for Andhi Toofan\, it\'s 19\! 🎉 Feel free to connect\, chat\, and share your thoughts\. He\'s got the energy and enthusiasm to make your learning experience out of this world\! 🌟💬
+
+Ready to join the adventure? Reach out and let\'s explore the world of knowledge together\! 📚🌏
+'''
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text=contact_text, parse_mode="MarkdownV2", disable_web_page_preview=True)
 
@@ -248,7 +258,6 @@ def main():
 
     # Start the bot
     updater.start_polling()
-    # st.text("Bot is running...")
 
     updater.idle()
 
