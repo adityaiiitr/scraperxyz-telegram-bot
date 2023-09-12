@@ -179,8 +179,8 @@ def main():
     updater.idle()
 
 if __name__ == "__main__":
-    TOKEN = os.getenv('BOT_TOKEN')
-    # Start the bot in a separate thread
-    bot_thread = threading.Thread(target=main)
-    bot_thread.start()
-    # main()
+    # TOKEN = os.getenv('BOT_TOKEN')
+    # # Start the bot in a separate thread
+    # bot_thread = threading.Thread(target=main)
+    # bot_thread.start()
+    main()
