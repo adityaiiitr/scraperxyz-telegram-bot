@@ -6,6 +6,8 @@ from selectolax.parser import HTMLParser
 from dataclasses import dataclass, asdict
 from dotenv import load_dotenv
 import httpx
+import threading
+
 
 # Load environment variables
 load_dotenv()
@@ -172,7 +174,13 @@ def main():
 
     # Start the bot
     updater.start_polling()
+    # st.text("Bot is running...")
+
     updater.idle()
 
 if __name__ == "__main__":
-    main()
+    TOKEN = os.getenv('BOT_TOKEN')
+    # Start the bot in a separate thread
+    bot_thread = threading.Thread(target=main)
+    bot_thread.start()
+    # main()
