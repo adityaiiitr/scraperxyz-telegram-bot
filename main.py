@@ -60,30 +60,39 @@ def echo(update: Update, context: CallbackContext):
     
     check = "Search Results:\n"
     for item in result:
-        check += f"{item['ids']}\n{item['title']}\n{item['link']}\n\n"
+        check += f"🔗 [{item['title']}]({item['link']})\n"
         if item['ids'] == 4:
             break
 
     context.bot.send_message(
-        chat_id=update.effective_chat.id, text=check.strip())
+        chat_id=update.effective_chat.id, text=check.strip(),disable_web_page_preview=True, parse_mode="MarkdownV2")
 
 # Function to send a welcome message
 def start(update: Update, context: CallbackContext):
     user = update.effective_user
+    chat = update.effective_chat
+    user_id = user.id
+    chat_id = chat.id
+    username = user.username if user.username else "N/A"
+
+    logger.info(f"User started a conversation - User ID: {user_id}, Chat ID: {chat_id}, Username: {username}")
+
+    user = update.effective_user
     name = user.first_name + (" " + user.last_name if user.last_name else "")
+
     
     welcome_text = f'''
-👋 **Welcome to ShoutToLearn Bot, {name}!**
+👋 **Welcome to ShoutToLearn Bot, {name}\!**
 
-I'm your friendly study companion, here to make learning a breeze. 📚✨
+I\'m your friendly study companion, here to make learning a breeze\. 📚✨
 
 Need assistance? Just say the word:
 
-- 🚀 Type `/help` to unlock a treasure trove of bot features.
+🚀 Type `/help` to unlock a treasure trove of bot features\.
 
-Let's embark on this learning journey together! Feel free to ask questions or explore the commands. 🤖💬
+Let's embark on this learning journey together\! Feel free to ask questions or explore the commands\. 🤖💬
 
-Happy learning, {name}! 📖🌟
+Happy learning, {name}\! 📖🌟
 
 '''
     
@@ -92,35 +101,64 @@ Happy learning, {name}! 📖🌟
 
 # Function to send help information
 def help(update: Update, context: CallbackContext):
+    user = update.effective_user
+    chat = update.effective_chat
+    user_id = user.id
+    chat_id = chat.id
+    username = user.username if user.username else "N/A"
+
+    logger.info(f"User requested help - User ID: {user_id}, Chat ID: {chat_id}, Username: {username}")
+
     help_text = '''
 🤖 **Bot Help Guide**
 
-Welcome to the ShoutToLearn Bot! Here are some commands to supercharge your learning experience:
+Welcome to the ShoutToLearn Bot\! Here are some commands to supercharge your learning experience:
 
-- 🚀 `/start` - Get a warm welcome message.
-- ℹ️ `/help` - Access this informative guide anytime.
-- 📞 `/contact` - Connect with Admin ShoutToLearn.
-- 📚 `/isc` - Dive into Class 12-related resources.
-- 📘 `/icse` - Explore Class 10-related materials.
-- 🌐 `/social` - Follow us on social media.
+🚀 `/start` \- Get a warm welcome message\.
 
-If you're eager to share study materials, simply use `/contact`. We'd love to hear from you!
+ℹ️ `/help` \- Access this informative guide anytime\.
 
-Don't worry about complicated instructions. Just send any text, and our bot will magically find related content on our website. It's that simple and tech-savvy!
+📞 `/contact` \- Connect with Admin ShoutToLearn\.
 
-Happy learning! 📖✨
+📚 `/isc` \- Dive into Class 12\-related resources\.
+
+📘 `/icse` \- Explore Class 10\-related materials\.
+
+🌐 `/social` \- Follow us on social media\.
+
+If you\'re eager to share study materials, simply use `/contact`\. We\'d love to hear from you\!
+
+Don\'t worry about complicated instructions\. Just send any text, and our bot will magically find related content on our website\. It\'s that simple and tech\-savvy\!
+
+Happy learning\! 📖✨
 '''
     context.bot.send_message(
-        chat_id=update.effective_chat.id, text=help_text)
+        chat_id=update.effective_chat.id, text=help_text, parse_mode="MarkdownV2", disable_web_page_preview=True)
 
 # Function to send contact information
 def contact(update: Update, context: CallbackContext):
+    user = update.effective_user
+    chat = update.effective_chat
+    user_id = user.id
+    chat_id = chat.id
+    username = user.username if user.username else "N/A"
+
+    logger.info(f"User requested contact information - User ID: {user_id}, Chat ID: {chat_id}, Username: {username}")
+
     contact_text = "Name: *Andhi Toofan*\nOwner, ShoutToLearn\nTelegram: @AndhiToofan\nHe is 19 years old. So, talk to him accordingly\!"
     context.bot.send_message(chat_id=update.effective_chat.id,
-                             text=contact_text, parse_mode="MarkdownV2")
+                             text=contact_text, parse_mode="MarkdownV2", disable_web_page_preview=True)
 
 # Function to send ISC-related information
 def isc(update: Update, context: CallbackContext):
+    user = update.effective_user
+    chat = update.effective_chat
+    user_id = user.id
+    chat_id = chat.id
+    username = user.username if user.username else "N/A"
+
+    logger.info(f"User requested ISC-related information - User ID: {user_id}, Chat ID: {chat_id}, Username: {username}")
+
     inter_text = '''
 📚 *List Of ISC Content:*
 
@@ -129,31 +167,47 @@ def isc(update: Update, context: CallbackContext):
 🔗 [Tempest](https://bot.shouttolearn.com/tempest)
 '''
     context.bot.send_message(chat_id=update.effective_chat.id, text=inter_text,
-                             parse_mode="MarkdownV2")
+                             parse_mode="MarkdownV2", disable_web_page_preview=True)
 
 # Function to send ICSE-related information
 def icse(update: Update, context: CallbackContext):
+    user = update.effective_user
+    chat = update.effective_chat
+    user_id = user.id
+    chat_id = chat.id
+    username = user.username if user.username else "N/A"
+
+    logger.info(f"User requested ICSE-related information - User ID: {user_id}, Chat ID: {chat_id}, Username: {username}")
+
     high_text = '''
 📚 *List Of ICSE Content:*
 
-- 🔗 [Treasure Chest Poems](https://www.shouttolearn.com/p/workbook-answers-of-treasure-chest-poems.html)
-- 🔗 [Treasure Chest Stories](https://www.shouttolearn.com/p/workbook-answers-of-treasure-chest.html)
-- 🔗 [Treasure Trove Workbook Stories](https://bot.shouttolearn.com/stories)
-- 🔗 [Treasure Trove Workbook Stories](https://bot.shouttolearn.com/stories)
-- 🔗 [Treasure Trove Workbook Poems](https://bot.shouttolearn.com/poems)
-- 🔗 [Merchant Of Venice](https://bot.shouttolearn.com/mov)
-- 🔗 [Ekanki Sanchay](https://bot.shouttolearn.com/ekanki)
-- 🔗 [Sahitya Sagar](https://bot.shouttolearn.com/sahitya)
-- 🔗 [Geography](https://bot.shouttolearn.com/geo)
-- 🔗 [History](https://bot.shouttolearn.com/history)
+🔗 [Treasure Chest Poems](https://www.shouttolearn.com/p/workbook-answers-of-treasure-chest-poems.html)
+🔗 [Treasure Chest Stories](https://www.shouttolearn.com/p/workbook-answers-of-treasure-chest.html)
+🔗 [Treasure Trove Workbook Stories](https://bot.shouttolearn.com/stories)
+🔗 [Treasure Trove Workbook Stories](https://bot.shouttolearn.com/stories)
+🔗 [Treasure Trove Workbook Poems](https://bot.shouttolearn.com/poems)
+🔗 [Merchant Of Venice](https://bot.shouttolearn.com/mov)
+🔗 [Ekanki Sanchay](https://bot.shouttolearn.com/ekanki)
+🔗 [Sahitya Sagar](https://bot.shouttolearn.com/sahitya)
+🔗 [Geography](https://bot.shouttolearn.com/geo)
+🔗 [History](https://bot.shouttolearn.com/history)
     '''
     context.bot.send_message(chat_id=update.effective_chat.id, text=high_text,
-                             parse_mode="MarkdownV2")
+                             parse_mode="MarkdownV2", disable_web_page_preview=True)
 
 # Function to send social media links
 def social(update: Update, context: CallbackContext):
+    user = update.effective_user
+    chat = update.effective_chat
+    user_id = user.id
+    chat_id = chat.id
+    username = user.username if user.username else "N/A"
+
+    logger.info(f"User requested Social Media Handles - User ID: {user_id}, Chat ID: {chat_id}, Username: {username}")
+
     social_text = '''
-📱 Follow Official Social Media Handles Only!
+📱 Follow Official Social Media Handles Only\!
 
 📘 [Facebook](https://bot.shouttolearn.com/fb)
 📷 [Instagram](https://bot.shouttolearn.com/ig)
@@ -161,7 +215,7 @@ def social(update: Update, context: CallbackContext):
 📢 *Telegram:* @ShoutToLearn
     '''
     context.bot.send_message(chat_id=update.effective_chat.id,
-                             text=social_text, parse_mode="MarkdownV2")
+                             text=social_text, parse_mode="MarkdownV2", disable_web_page_preview=True)
 
 # Function to handle unknown commands
 def unknown(update: Update, context: CallbackContext):
