@@ -6,7 +6,6 @@ from selectolax.parser import HTMLParser
 from dataclasses import dataclass, asdict
 from dotenv import load_dotenv
 import httpx
-import threading
 
 
 # Load environment variables
@@ -73,7 +72,20 @@ def start(update: Update, context: CallbackContext):
     user = update.effective_user
     name = user.first_name + (" " + user.last_name if user.last_name else "")
     
-    welcome_text = f"Hey, *{name}*\! Welcome to ShoutToLearn Bot\!\n\nGet Help: /help"
+    welcome_text = f'''
+👋 **Welcome to ShoutToLearn Bot, {name}!**
+
+I'm your friendly study companion, here to make learning a breeze. 📚✨
+
+Need assistance? Just say the word:
+
+- 🚀 Type `/help` to unlock a treasure trove of bot features.
+
+Let's embark on this learning journey together! Feel free to ask questions or explore the commands. 🤖💬
+
+Happy learning, {name}! 📖🌟
+
+'''
     
     context.bot.send_message(
         chat_id=update.effective_chat.id, text=welcome_text, parse_mode="MarkdownV2")
@@ -81,53 +93,59 @@ def start(update: Update, context: CallbackContext):
 # Function to send help information
 def help(update: Update, context: CallbackContext):
     help_text = '''
-    Help Guide For This Bot!
+🤖 **Bot Help Guide**
 
-Bot Commands
-/start - Welcome Message.
-/help - This Message will get Displayed.
-/contact - Contact the Admin ShoutToLearn
-/isc - Class 12 related Stuff
-/icse - Class 10 related Stuff
-/social - Social Media Follow Links 
+Welcome to the ShoutToLearn Bot! Here are some commands to supercharge your learning experience:
 
-If You Want To Share Any Study Material, use /contact
+- 🚀 `/start` - Get a warm welcome message.
+- ℹ️ `/help` - Access this informative guide anytime.
+- 📞 `/contact` - Connect with Admin ShoutToLearn.
+- 📚 `/isc` - Dive into Class 12-related resources.
+- 📘 `/icse` - Explore Class 10-related materials.
+- 🌐 `/social` - Follow us on social media.
 
-Any Other Text Sent To This Bot Will Be Considered as a Search Query.
+If you're eager to share study materials, simply use `/contact`. We'd love to hear from you!
 
-The Bot will Help you find if the sent text content is available on the website.
+Don't worry about complicated instructions. Just send any text, and our bot will magically find related content on our website. It's that simple and tech-savvy!
 
-So Simple!  
-    '''
+Happy learning! 📖✨
+'''
     context.bot.send_message(
         chat_id=update.effective_chat.id, text=help_text)
 
 # Function to send contact information
 def contact(update: Update, context: CallbackContext):
-    contact_text = "Name: *Andhi Toofan*\nOwner, ShoutToLearn\nTelegram: @AndhiToofan\nHe is 19 years old. So, talk to him accordingly!"
+    contact_text = "Name: *Andhi Toofan*\nOwner, ShoutToLearn\nTelegram: @AndhiToofan\nHe is 19 years old. So, talk to him accordingly\!"
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text=contact_text, parse_mode="MarkdownV2")
 
 # Function to send ISC-related information
 def isc(update: Update, context: CallbackContext):
     inter_text = '''
-*List Of ISC Content:*
+📚 *List Of ISC Content:*
 
-[Echoes](https://bot.shouttolearn.com/echoes)   [Reverie](https://bot.shouttolearn.com/reverie)   [Tempest](https://bot.shouttolearn.com/tempest)
-    '''
+🔗 [Echoes](https://bot.shouttolearn.com/echoes)
+🔗 [Reverie](https://bot.shouttolearn.com/reverie)
+🔗 [Tempest](https://bot.shouttolearn.com/tempest)
+'''
     context.bot.send_message(chat_id=update.effective_chat.id, text=inter_text,
                              parse_mode="MarkdownV2")
 
 # Function to send ICSE-related information
 def icse(update: Update, context: CallbackContext):
     high_text = '''
-*List Of ICSE Content:*
+📚 *List Of ICSE Content:*
 
-[Treasure Trove Workbook Stories](https://bot.shouttolearn.com/stories)   
-[Treasure Trove Workbook Poems](https://bot.shouttolearn.com/poems)
-[Merchant Of Venice](https://bot.shouttolearn.com/mov)
-[Ekanki Sanchay](https://bot.shouttolearn.com/ekanki)   [Sahitya Sagar](https://bot.shouttolearn.com/sahitya)
-[Geography](https://bot.shouttolearn.com/geo)    [History](https://bot.shouttolearn.com/history)
+- 🔗 [Treasure Chest Poems](https://www.shouttolearn.com/p/workbook-answers-of-treasure-chest-poems.html)
+- 🔗 [Treasure Chest Stories](https://www.shouttolearn.com/p/workbook-answers-of-treasure-chest.html)
+- 🔗 [Treasure Trove Workbook Stories](https://bot.shouttolearn.com/stories)
+- 🔗 [Treasure Trove Workbook Stories](https://bot.shouttolearn.com/stories)
+- 🔗 [Treasure Trove Workbook Poems](https://bot.shouttolearn.com/poems)
+- 🔗 [Merchant Of Venice](https://bot.shouttolearn.com/mov)
+- 🔗 [Ekanki Sanchay](https://bot.shouttolearn.com/ekanki)
+- 🔗 [Sahitya Sagar](https://bot.shouttolearn.com/sahitya)
+- 🔗 [Geography](https://bot.shouttolearn.com/geo)
+- 🔗 [History](https://bot.shouttolearn.com/history)
     '''
     context.bot.send_message(chat_id=update.effective_chat.id, text=high_text,
                              parse_mode="MarkdownV2")
@@ -135,10 +153,12 @@ def icse(update: Update, context: CallbackContext):
 # Function to send social media links
 def social(update: Update, context: CallbackContext):
     social_text = '''
-    Follow Official Social Media Handles Only!
-    
-[Facebook](https://bot.shouttolearn.com/fb)   [Instagram](https://bot.shouttolearn.com/ig)   [Twitter](https://bot.shouttolearn.com/tw)
-*Telegram:* @ShoutToLearn
+📱 Follow Official Social Media Handles Only!
+
+📘 [Facebook](https://bot.shouttolearn.com/fb)
+📷 [Instagram](https://bot.shouttolearn.com/ig)
+🐦 [Twitter](https://bot.shouttolearn.com/tw)
+📢 *Telegram:* @ShoutToLearn
     '''
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text=social_text, parse_mode="MarkdownV2")
@@ -180,7 +200,4 @@ def main():
 
 if __name__ == "__main__":
     # TOKEN = os.getenv('BOT_TOKEN')
-    # # Start the bot in a separate thread
-    # bot_thread = threading.Thread(target=main)
-    # bot_thread.start()
     main()
