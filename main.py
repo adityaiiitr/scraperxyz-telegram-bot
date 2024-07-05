@@ -26,7 +26,7 @@ class SearchResults:
 # Function to get HTML content from a website
 def get_html(text: str):
     logger.info(f"Searched Text: {text}")
-    url = f"https://www.shouttolearn.com/search?q={text}"
+    url = f"https://www.scraperxyz.com/search?q={text}"
     
     with httpx.Client() as client:
         resp = client.get(url)
@@ -82,7 +82,7 @@ def start(update: Update, context: CallbackContext):
 
     
     welcome_text = f'''
-👋 **Welcome to ShoutToLearn Bot, {name}\!**
+👋 **Welcome to scraperxyz Bot, {name}\!**
 
 I\'m your friendly study companion, here to make learning a breeze\. 📚✨
 
@@ -112,13 +112,13 @@ def help(update: Update, context: CallbackContext):
     help_text = '''
 🤖 **Bot Help Guide**
 
-Welcome to the ShoutToLearn Bot\! Here are some commands to supercharge your learning experience:
+Welcome to the scraperxyz Bot\! Here are some commands to supercharge your learning experience:
 
 🚀 `/start` \- Get a warm welcome message\.
 
 ℹ️ `/help` \- Access this informative guide anytime\.
 
-📞 `/contact` \- Connect with Admin ShoutToLearn\.
+📞 `/contact` \- Connect with Admin scraperxyz\.
 
 📚 `/isc` \- Dive into Class 12\-related resources\.
 
@@ -146,10 +146,10 @@ def contact(update: Update, context: CallbackContext):
     logger.info(f"User requested contact information - User ID: {user_id}, Chat ID: {chat_id}, Username: {username}")
 
     contact_text = '''
-🚀 **Meet the Mastermind Behind ShoutToLearn**
+🚀 **Meet the Mastermind Behind scraperxyz**
 
 Name: *Andhi Toofan* 💥
-Role: Founder and Captain of ShoutToLearn 🚀
+Role: Founder and Captain of scraperxyz 🚀
 Telegram: [@AndhiToofan](https://telegram.me/AndhiToofan)
 
 Age is just a number\, and for Andhi Toofan\, it\'s 19\! 🎉 Feel free to connect\, chat\, and share your thoughts\. He\'s got the energy and enthusiasm to make your learning experience out of this world\! 🌟💬
@@ -172,9 +172,9 @@ def isc(update: Update, context: CallbackContext):
     inter_text = '''
 📚 *List Of ISC Content:*
 
-🔗 [Echoes](https://bot.shouttolearn.com/echoes)
-🔗 [Reverie](https://bot.shouttolearn.com/reverie)
-🔗 [Tempest](https://bot.shouttolearn.com/tempest)
+🔗 [Echoes](https://bot.scraperxyz.com/echoes)
+🔗 [Reverie](https://bot.scraperxyz.com/reverie)
+🔗 [Tempest](https://bot.scraperxyz.com/tempest)
 '''
     context.bot.send_message(chat_id=update.effective_chat.id, text=inter_text,
                              parse_mode="MarkdownV2", disable_web_page_preview=True)
@@ -192,16 +192,16 @@ def icse(update: Update, context: CallbackContext):
     high_text = '''
 📚 *List Of ICSE Content:*
 
-🔗 [Treasure Chest Poems](https://www.shouttolearn.com/p/workbook-answers-of-treasure-chest-poems.html)
-🔗 [Treasure Chest Stories](https://www.shouttolearn.com/p/workbook-answers-of-treasure-chest.html)
-🔗 [Treasure Trove Workbook Stories](https://bot.shouttolearn.com/stories)
-🔗 [Treasure Trove Workbook Stories](https://bot.shouttolearn.com/stories)
-🔗 [Treasure Trove Workbook Poems](https://bot.shouttolearn.com/poems)
-🔗 [Merchant Of Venice](https://bot.shouttolearn.com/mov)
-🔗 [Ekanki Sanchay](https://bot.shouttolearn.com/ekanki)
-🔗 [Sahitya Sagar](https://bot.shouttolearn.com/sahitya)
-🔗 [Geography](https://bot.shouttolearn.com/geo)
-🔗 [History](https://bot.shouttolearn.com/history)
+🔗 [Treasure Chest Poems](https://www.scraperxyz.com/p/workbook-answers-of-treasure-chest-poems.html)
+🔗 [Treasure Chest Stories](https://www.scraperxyz.com/p/workbook-answers-of-treasure-chest.html)
+🔗 [Treasure Trove Workbook Stories](https://bot.scraperxyz.com/stories)
+🔗 [Treasure Trove Workbook Stories](https://bot.scraperxyz.com/stories)
+🔗 [Treasure Trove Workbook Poems](https://bot.scraperxyz.com/poems)
+🔗 [Merchant Of Venice](https://bot.scraperxyz.com/mov)
+🔗 [Ekanki Sanchay](https://bot.scraperxyz.com/ekanki)
+🔗 [Sahitya Sagar](https://bot.scraperxyz.com/sahitya)
+🔗 [Geography](https://bot.scraperxyz.com/geo)
+🔗 [History](https://bot.scraperxyz.com/history)
     '''
     context.bot.send_message(chat_id=update.effective_chat.id, text=high_text,
                              parse_mode="MarkdownV2", disable_web_page_preview=True)
@@ -219,10 +219,10 @@ def social(update: Update, context: CallbackContext):
     social_text = '''
 📱 Follow Official Social Media Handles Only\!
 
-📘 [Facebook](https://bot.shouttolearn.com/fb)
-📷 [Instagram](https://bot.shouttolearn.com/ig)
-🐦 [Twitter](https://bot.shouttolearn.com/tw)
-📢 *Telegram:* @ShoutToLearn
+📘 [Facebook](https://bot.scraperxyz.com/fb)
+📷 [Instagram](https://bot.scraperxyz.com/ig)
+🐦 [Twitter](https://bot.scraperxyz.com/tw)
+📢 *Telegram:* @scraperxyz
     '''
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text=social_text, parse_mode="MarkdownV2", disable_web_page_preview=True)

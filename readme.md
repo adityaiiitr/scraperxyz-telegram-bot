@@ -1,14 +1,14 @@
-# ShoutToLearn Telegram Bot
+# scraperxyz Telegram Bot
 
-A Telegram bot to search for content on the `ShoutToLearn` website and display results.
+A Telegram bot to search for content on the `scraperxyz` website and display results.
 
 ## Features:
 
-- Web scraping to fetch search results from `ShoutToLearn`.
+- Web scraping to fetch search results from `scraperxyz`.
 - Command-based interactions.
-- Provides information about ShoutToLearn's content for both ICSE and ISC.
+- Provides information about scraperxyz's content for both ICSE and ISC.
 - Contact details for the admin.
-- Links to ShoutToLearn's social media handles.
+- Links to scraperxyz's social media handles.
 
 ## Commands:
 
@@ -41,8 +41,3 @@ Feel free to fork this repository and submit pull requests. For major changes, p
 
 This project is licensed under the MIT License.
 
-## Contact:
-
-For any queries or feedback, please contact:
-- Name: Andhi Toofan
-- Telegram: @AndhiToofan
